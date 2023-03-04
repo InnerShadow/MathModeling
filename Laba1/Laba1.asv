@@ -1,0 +1,12 @@
+
+%3'th task
+A = [7, 2; 4, 1];
+b = [23; 11];
+
+fprintf(inv(A).* b;
+
+%4'th task
+y = task4(A);
+
+%5'th task
+task5(0.1);
