@@ -1,7 +1,0 @@
-
-function task5(step)
-    x = -5: step : 5;
-    y = task4(x);
-    plot(x, y);
-    xlbale = 
-end
