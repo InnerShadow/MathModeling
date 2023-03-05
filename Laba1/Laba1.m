@@ -13,3 +13,4 @@ disp(task4(A));
 %5'th task
 task5(0.1);
 
+%simulink
