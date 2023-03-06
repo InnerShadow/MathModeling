@@ -1,20 +1,20 @@
 
 library('ggplot2')
 
-
 task4_4 <- function(L){
-  x <- rep(0, L)
+  y <- rep(0, L)
   for(i in 1 : L) {
-    x[i] <- mean(y[1 : i])
+    y[i] <- mean(uniform[1 : i])
   }
   
   df <- data.frame(
-    x <- x,
-    y <- log10(1 : L)
+    x <- log10(1 : L),
+    y <- y
   )
   
   ggplot() +
-    geom_line(data = df, aes(x = x, y = log10(1 : L)), col = '#FF0000')
+    geom_line(data = df, aes(x = log10(1 : L), y = y), col = '#FF0000') +
+    labs(x = "log10(L)", y = "mean")
   #ggplot(data = data.frame(x = x, y = max(y[1:L]/2)), aes(x = x, y = max(y[1:L]/2)), col = '#FFFFFF') + 
   #geom_line() + geom_point()
 }
@@ -27,8 +27,7 @@ task4_6_uniform <- function(vec){
 task4_8_uniform <- function(vec){
   uniformhist <- hist(vec, breaks = 10, plot = T, prob = TRUE)
   uniformhist$counts <- cumsum(uniformhist$counts) / length(vec)
-  
-  plot(uniformhist)
+  plot(uniformhist) 
   lines(x, dunif(x, min = 0, max = 1), col = "red", lwd = 5)
 }
 
