@@ -1,20 +1,18 @@
 
 library('ggplot2')
 
-task4_4 <- function(L){
-  y <- rep(0, L)
-  for(i in 1 : L) {
-    y[i] <- mean(uniform[1 : i])
-  }
+task4_4 <- function(vec){
+  y <- c(mean(vec[1:32]), mean(vec[1:316]), mean(vec[1:1000]), mean(vec[1:3162]), mean(vec[1:length(x)]))
+  x <- c(log10(32), log10(316), log10(1000), log10(3162), log10(length(vec)))
   
   df <- data.frame(
-    x <- log10(1 : L),
-    y <- y
+    x = x,
+    y = y
   )
   
   ggplot() +
-    geom_line(data = df, aes(x = log10(1 : L), y = y), col = '#FF0000') +
-    labs(x = "log10(L)", y = "mean")
+    geom_line(data = df, aes(x = x, y = y), col = '#FF0000') +
+    labs(x = "log10(L)", y = "mean") 
   #ggplot(data = data.frame(x = x, y = max(y[1:L]/2)), aes(x = x, y = max(y[1:L]/2)), col = '#FFFFFF') + 
   #geom_line() + geom_point()
 }
@@ -51,11 +49,7 @@ cat("min poisson:", min(poisDistr), " max poisson:", max(poisDistr))
 cat("empirical uniform mean:", mean(uniform), "teoretical:", 1/2)
 cat("empirical poisson mean:", mean(poisDistr), "teoretical:", 1.5)
 
-task4_4(32)
-task4_4(316)
-task4_4(1000)
-task4_4(3162)
-task4_4(7500)
+task4_4(uniform)
 
 cat("empirical uniform sd:", sd(uniform), "teoretical:", 1/sqrt(12))
 cat("empirical poisson sd:", sd(poisDistr), "teoretical:", sqrt(1.5))
